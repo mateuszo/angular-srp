@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { UsersService } from './services/users.service';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,6 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  users$ = this.http.get('https://jsonplaceholder.typicode.com/users/');
-
   selectedUser$ = new BehaviorSubject(null);
 
   selectedUserTodos$ = this.selectedUser$.pipe(
@@ -20,8 +19,11 @@ export class AppComponent {
       )
     )
   );
+  users$: Observable<any>;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private usersService: UsersService) {
+    this.users$ = this.usersService.getUsers();
+  }
 
   getUserImage(user) {
     return `https://avatars.dicebear.com/api/avataaars/${user.username}.svg`;

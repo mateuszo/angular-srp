@@ -2,7 +2,7 @@
 
 [x] - display task instructions
 [ ] - display user grid
-[ ] - fetch user list
+[x] - fetch user list
 [ ] - display user todos
 [ ] - fetch user todos
 [ ] - navigation between grid and details
