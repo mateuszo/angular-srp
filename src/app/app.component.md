@@ -1,6 +1,6 @@
 # App Component Responsibilities
 
-[ ] - display task instructions
+[x] - display task instructions
 [ ] - display user grid
 [ ] - fetch user list
 [ ] - display user todos

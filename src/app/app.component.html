@@ -1,30 +1,5 @@
 <div class="container mx-auto mt-4">
-  <h1>Angular Single Responsibility Principle exercise</h1>
-  <img
-    class="p-5"
-    src="https://thedavidmasters.files.wordpress.com/2018/10/single-responsibility-principle.jpg?w=400"
-  />
-  <div>
-    Your task is to refactor the current solution to meet the SRP.
-    <ol class="list-decimal list-inside">
-      <li>
-        Investigate the current solution and name all the responsibilities of
-        the app component 📝
-      </li>
-      <li>
-        Write integration tests before you start refactoring to be sure that you
-        don't mess anything 🧪
-      </li>
-      <li>Do the refactoring 👷</li>
-    </ol>
-    * Consider adding proper typing
-    <img
-      class="inline-block h-6"
-      src="https://img.icons8.com/color/48/000000/typescript.png"
-    /><br />
-    * <em>Bonus:</em> the project is using tailwind 😊
-  </div>
-
+  <app-instruction></app-instruction>
   <ng-container *ngIf="selectedUser$ | async as user; else userList">
     <div
       class="
