@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { User } from './model/user';
 import { UsersService } from './services/users.service';
 
 @Component({
@@ -19,13 +20,9 @@ export class AppComponent {
       )
     )
   );
-  users$: Observable<any>;
+  users$: Observable<User[]>;
 
   constructor(private http: HttpClient, private usersService: UsersService) {
     this.users$ = this.usersService.getUsers();
-  }
-
-  getUserImage(user) {
-    return `https://avatars.dicebear.com/api/avataaars/${user.username}.svg`;
   }
 }
