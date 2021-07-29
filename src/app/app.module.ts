@@ -10,6 +10,7 @@ import { UserListComponent } from './user-list/user-list.component';
   declarations: [AppComponent, AppInstructionComponent, UserListComponent],
   imports: [HttpClientModule, CommonModule, BrowserModule],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

@@ -1,12 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { TestBed, tick } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppInstructionComponent } from './app-instruction/app-instruction.component';
 import { AppComponent } from './app.component';
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { UsersService } from './services/users.service';
 import { userMocks } from '../test/user-mock';
 import { of } from 'rxjs';
@@ -20,7 +17,7 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent, AppInstructionComponent, UserListComponent],
       imports: [HttpClientTestingModule, CommonModule, BrowserModule],
-      providers: [UsersService],
+      providers: [UsersService]
     }).compileComponents();
   });
 
@@ -78,11 +75,28 @@ describe('AppComponent', () => {
 
     const userContainer = fixture.nativeElement.querySelector('.user-container');
 
-    userContainer.click()
+    userContainer.click();
 
-    fixture.detectChanges()
+    fixture.detectChanges();
 
     const selectedUserContainer = fixture.nativeElement.querySelector('.selected-user');
-    expect(selectedUserContainer).toBeTruthy()
+    expect(selectedUserContainer).toBeTruthy();
+  });
+
+  it('should unselect user properly', () => {
+
+    // selectedUserService.select(userMocks[0]);
+
+    const fixture = TestBed.createComponent(AppComponent);
+
+    fixture.detectChanges();
+
+    const closeButton = fixture.nativeElement.querySelector('.close-user-details');
+
+    closeButton.click();
+
+    fixture.detectChanges();
+
+    expect(closeButton).toBeFalse();
   });
 });

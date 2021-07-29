@@ -4,10 +4,11 @@ import { Observable } from 'rxjs';
 import { User } from '../model/user';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class UsersService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users/');

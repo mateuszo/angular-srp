@@ -10,7 +10,7 @@
   "
 >
   <div
-    (click)="onSelectUser(user)"
+    (click)="selectUser(user)"
     *ngFor="let user of users"
     class="
       user-container
@@ -36,7 +36,7 @@
         w-40
       "
     >
-      <img [src]="getUserImage(user)" alt="" class="h-full w-full" />
+      <img [src]="getUserImage(user)" alt="" class="h-full w-full"/>
     </div>
 
     <h2 class="mt-4 font-bold text-xl">{{ user.name }}</h2>
