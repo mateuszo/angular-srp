@@ -25,4 +25,8 @@ export class AppComponent {
   constructor(private http: HttpClient, private usersService: UsersService) {
     this.users$ = this.usersService.getUsers();
   }
+
+  selectUser(user: User) {
+    this.selectedUser$.next(user)
+  }
 }

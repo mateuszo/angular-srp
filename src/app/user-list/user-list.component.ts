@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from '../model/user';
 
 @Component({
@@ -8,6 +8,7 @@ import { User } from '../model/user';
 })
 export class UserListComponent implements OnInit {
   @Input() users: User[] = [];
+  @Output() selectUserEvent = new EventEmitter<User>();
 
   constructor() {}
 
@@ -15,5 +16,9 @@ export class UserListComponent implements OnInit {
 
   getUserImage(user) {
     return `https://avatars.dicebear.com/api/avataaars/${user.username}.svg`;
+  }
+
+  onSelectUser(user: User) {
+    this.selectUserEvent.emit(user);
   }
 }

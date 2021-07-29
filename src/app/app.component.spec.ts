@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { TestBed } from '@angular/core/testing';
+import { TestBed, tick } from '@angular/core/testing';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppInstructionComponent } from './app-instruction/app-instruction.component';
 import { AppComponent } from './app.component';
@@ -67,5 +67,22 @@ describe('AppComponent', () => {
     expect(userContainer.querySelectorAll('.user-container').length).toBe(2);
     expect(userContainer.textContent).toMatch('Leanne Graham');
     expect(userContainer.textContent).toMatch('Shanna@melissa.tv');
+  });
+
+  it('should select user properly', () => {
+    TestBed.overrideProvider(UsersService, { useValue: userServiceSpy });
+    userServiceSpy.getUsers.and.returnValue(of(userMocks));
+
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+
+    const userContainer = fixture.nativeElement.querySelector('.user-container');
+
+    userContainer.click()
+
+    fixture.detectChanges()
+
+    const selectedUserContainer = fixture.nativeElement.querySelector('.selected-user');
+    expect(selectedUserContainer).toBeTruthy()
   });
 });

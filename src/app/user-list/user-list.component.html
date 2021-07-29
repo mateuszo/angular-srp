@@ -10,7 +10,7 @@
   "
 >
   <div
-    (click)="selectedUser$.next(user)"
+    (click)="onSelectUser(user)"
     *ngFor="let user of users"
     class="
       user-container

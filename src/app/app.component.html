@@ -3,6 +3,7 @@
   <ng-container *ngIf="selectedUser$ | async as user; else userList">
     <div
       class="
+        selected-user
         flex flex-col
         items-center
         justify-center
@@ -48,6 +49,7 @@
   <ng-template #userList>
     <app-user-list
       *ngIf="users$ | async as users"
+      (selectUserEvent)="selectUser($event)"
       [users]="users"
     ></app-user-list>
   </ng-template>
